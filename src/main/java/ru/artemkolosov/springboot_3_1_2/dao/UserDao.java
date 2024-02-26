@@ -1,10 +1,11 @@
-package ru.artemkolosov.springboot_3_1_2.service;
+package ru.artemkolosov.springboot_3_1_2.dao;
 
 import ru.artemkolosov.springboot_3_1_2.model.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserDao {
+
     List<User> getAllUsers();
 
     void addUser(User user);
@@ -14,5 +15,4 @@ public interface UserService {
     void updateUser(User user);
 
     void deleteUser(Long id);
-
 }

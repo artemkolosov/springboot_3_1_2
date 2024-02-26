@@ -47,7 +47,7 @@ public class UserController {
 
     @PostMapping("/useradd")
     public String createUser(User user){
-        userService.saveUser(user);
+        userService.addUser(user);
         return "redirect:/users";
     }
 
@@ -55,7 +55,7 @@ public class UserController {
 
     @GetMapping("/users")
     public String findAll(Model model) {
-        List<User> users = userService.findAll();
+        List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
         return "users";
 
@@ -64,14 +64,14 @@ public class UserController {
 
     @GetMapping("/useredit/{id}")
     public String updateUserForm(@PathVariable("id") Long id, Model model){
-        User user = userService.findById(id);
+        User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "useredit";
     }
 
     @PostMapping("/useredit")
     public String updateUser(User user){
-        userService.saveUser(user);
+        userService.updateUser(user);
         return "redirect:/users";
     }
 
@@ -79,7 +79,7 @@ public class UserController {
 
     @GetMapping("user-delete/{id}")
     public String deleteUser(@PathVariable("id") Long id){
-        userService.deleteById(id);
+        userService.deleteUser(id);
         return "redirect:/users";
     }
 
